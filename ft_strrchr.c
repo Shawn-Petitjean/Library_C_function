@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:31:33 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/08 11:54:06 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/11/11 17:44:09 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = 0;
 	res = NULL;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			res = (char *) &s[i];
 		i++;
 	}

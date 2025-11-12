@@ -3,77 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:13:33 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/10 16:47:21 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/11/11 20:34:31 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_noset(char a, char const *set)
+static int	ft_contains(const char *str, const char c)
 {
 	int	i;
 
+	if (!c)
+		return (0);
 	i = 0;
-	while (set[i] != '\0')
+	while (str[i])
 	{
-		if (set[i] == a)
+		if (str[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-static int	*ft_strlen_order(char const *s1, char const *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	int	start;
-	int	end;
-	int	i;
-	int	*res;
+	char	*string;
+	size_t	size;
+	int		start;
+	int		end;
+	int		i;
 
+	size = ft_strlen(s1);
 	i = 0;
-	res = malloc(2 * sizeof (int));
-	while (s1[i] != '\0' && ft_noset(s1[i], set) == 1)
+	while (s1[i] && ft_contains(set, s1[i]))
 		i++;
 	start = i;
-	i = ft_strlen(s1);
-	i -= 1;
-	while (s1[i] != '\0' && ft_noset(s1[i], set) == 1)
+	i = size - 1;
+	while (s1[i] && ft_contains(set, s1[i]))
 		i--;
 	end = i + 1;
-	res[0] = start;
-	res[1] = end;
-	if (res[0] >= res[1])
-		return (NULL);
-	return (res);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*a;
-	int		*len;
-	int		i;
-	int		y;
-
-	len = ft_strlen_order(s1, set);
-	if (!len)
-		return (a = malloc(1));
-	a = ft_calloc(((len[1] - len[0] + 1)), sizeof(char));
-	printf ("%d\n%d\n", len[1], len[0]);
-	if (!a)
-		return (NULL);
-	i = len[0];
-	y = 0;
-	while (s1[i] != '\0' && i < len[1])
-	{
-		a[y] = s1[i];
-		y++;
-		i++;
-	}
-	free(len);
-	return (a);
+	string = ft_substr(s1, start, end - start);
+	return (string);
 }
 
 // int	main()

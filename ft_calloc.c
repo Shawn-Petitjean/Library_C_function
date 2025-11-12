@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:15:38 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/10 16:53:14 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/11/11 17:34:31 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 void	*ft_calloc( size_t n, size_t l)
 {
-	char	*a;
-	size_t	i;
+	unsigned char	*a;
 
-	i = 0;
-	if ((n * l) > 2147483647 || (!n || !l))
+	if (n == 0 || l == 0)
+		return (a = malloc(0), a);
+	if (n > 2147483647 || l > 2147483647)
 		return (NULL);
 	a = malloc(n * l);
 	if (!a)
 		return (NULL);
-	while (i < n)
-	{
-		a[i] = 0;
-		i++;
-	}
-	return ((void *) a);
+	ft_bzero(a, (n * l));
+	return (a);
 }
 
 // int main()

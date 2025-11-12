@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:13:28 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/06 10:11:07 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/11/11 16:30:37 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	res;
 	int	i;

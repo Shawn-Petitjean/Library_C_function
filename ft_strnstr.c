@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:46:37 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/08 11:53:09 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/11/11 18:19:54 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	y;
 
-	i = 0;
-	if (little == NULL)
+	if (little[0] == 0)
 		return ((char *)big);
-	while (big[i] != '\0' && i < len)
+	i = 0;
+	while (i < len && big[i])
 	{
-		y = 0;
-		while (big[i + y] == little[y] && i < len)
+		if (little[0] == big[i])
 		{
-			if (little[y] == '\0')
+			if (ft_strlen(little) > len - i)
+				return (NULL);
+			if (!ft_strncmp(little, &big[i], ft_strlen(little)))
 				return ((char *)&big[i]);
-			y++;
 		}
 		i++;
 	}
